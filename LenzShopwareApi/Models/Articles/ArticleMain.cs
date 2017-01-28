@@ -10,7 +10,7 @@ namespace Lenz.ShopwareApi.Models.Articles
     {
         public int? id;
         public int? mainDetailId;
-        public int? supplierID;
+        public int? supplierId;
         public int? taxId;
         public int? priceGroupId;
         public int? filterGroupId;
