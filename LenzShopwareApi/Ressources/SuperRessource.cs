@@ -50,9 +50,14 @@ namespace Lenz.ShopwareApi.Ressources
             return response.data;
         }
 
-        public void add(TResponse data)
+        public ApiPostResponse add(TResponse data)
         {
-            String response = this.executeAdd(data);
+            ApiResponse<ApiPostResponse> response = convertResponseStringToObject<ApiPostResponse>(this.executeAdd(data));
+            if (!response.success)
+            {
+                throw new Exception(response.message);
+            }
+            return response.data;
         }
 
         protected String executeAdd(TResponse data)

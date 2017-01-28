@@ -13,4 +13,10 @@ namespace Lenz.ShopwareApi
         public Boolean success;
         public string message;
     }
+
+    public class ApiPostResponse
+    {
+        public int? id;
+        public string location;
+    }
 }

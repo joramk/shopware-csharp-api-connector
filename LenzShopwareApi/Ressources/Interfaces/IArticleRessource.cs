@@ -13,7 +13,12 @@ namespace Lenz.ShopwareApi.Ressources
 
         ArticleMain getByOrdernumber(string ordernumber);
 
-        void add(ArticleMain article);
+        /// <summary>
+        /// Add article to the shop
+        /// </summary>
+        /// <param name="article">the article to add</param>
+        /// <returns>the "id" of the created article, 0 if it failed</returns>
+        int add(ArticleMain article);
 
         void update(ArticleMain article);
     }
