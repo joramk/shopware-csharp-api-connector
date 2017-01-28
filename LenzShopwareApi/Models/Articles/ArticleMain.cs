@@ -10,6 +10,7 @@ namespace Lenz.ShopwareApi.Models.Articles
     {
         public int? id;
         public int? mainDetailId;
+        public int? supplierID;
         public int? taxId;
         public int? priceGroupId;
         public int? filterGroupId;
@@ -25,7 +26,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         public bool notification;
         
         public bool active;
-        public int pseudeSales;
         public bool highlight;
         public bool lastStock;
         public bool crossBundleLook;
@@ -65,6 +65,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         public List<Category> categories;
         public List<SimilarArticle> similar;
         public List<RelatedArticle> related;
-        public List<Translation> translations;
+        public Dictionary<String, Translation> translations;
     }
 }
