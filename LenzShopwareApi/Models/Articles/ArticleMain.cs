@@ -47,8 +47,8 @@ namespace Lenz.ShopwareApi.Models.Articles
         public List<PropertyValue> propertyValues;
 
         public ArticleMainDetail mainDetail = new ArticleMainDetail();
-        public Supplier supplier = new Supplier();
-        public Tax tax = new Tax();
+        public Supplier supplier;  // = new Supplier();
+        public Tax tax;            // = new Tax();
 
         public PropertyGroup propertyGroup;
         public List<CustomerGroup> customerGroups;
