@@ -16,13 +16,13 @@ namespace Lenz.ShopwareApi.Ressources
         {
             if (article.name != null
                 && article.mainDetail.number != null
-                && article.supplier != null
-                && (article.tax.tax != null || article.taxId != null))
+                && (article.supplierId!=null || article.supplier != null)
+                && (article.taxId != null || article.tax != null ))
             {
                 ApiPostResponse response = base.add(article);
                 return response.id.GetValueOrDefault();
             }
-            throw new Exception("Minimum required fields for article add: article.name, article.mainDetail.number, article.supplier.name, article.tax.tax or article.taxId");
+            throw new ArgumentException("Minimum required fields for article add: article.name, article.mainDetail.number, article.supplier or article.supplierId, article.tax or article.taxId");
         }
 
         new public void update(ArticleMain article)

@@ -6,6 +6,15 @@ using System.Collections.Generic;
 
 namespace Lenz.ShopwareApi.Models.Articles
 {
+    /// <summary>
+    /// ArticleCategory reflects the model used to represent the partial data of a category returned/set with the Article resource
+    /// </summary>
+    public class ArticleCategory
+    {
+        public int? id;
+        public string name;
+    }
+
     public class ArticleMain
     {
         public int? id;
@@ -19,8 +28,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         public string name;
         public string description;
         public string descriptionLong;
-
-
 
         public int pseudoSales;
         public bool notification;
@@ -43,26 +50,19 @@ namespace Lenz.ShopwareApi.Models.Articles
         /* price */
         public bool priceGroupActive;
 
-
         public List<PropertyValue> propertyValues;
-
         public ArticleMainDetail mainDetail = new ArticleMainDetail();
         public Supplier supplier;  // = new Supplier();
         public Tax tax;            // = new Tax();
-
         public PropertyGroup propertyGroup;
         public List<CustomerGroup> customerGroups;
         public List<Image> images;
-
-
         public String configuratorSet;
         public List<Link> links;
         public List<Download> downloads;
-
-        // public Category categories
         public List<ArticleDetail> details;
         public List<SeoCategory> seoCategories;
-        public List<Category> categories;
+        public List<ArticleCategory> categories;
         public List<SimilarArticle> similar;
         public List<RelatedArticle> related;
         public Dictionary<String, Translation> translations;
