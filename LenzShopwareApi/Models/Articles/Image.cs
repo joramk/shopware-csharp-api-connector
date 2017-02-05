@@ -8,15 +8,15 @@ namespace Lenz.ShopwareApi.Models.Articles
 {
     public class Image
     {
-        public int id;
-        public int articleId;
+        public int? id;
+        public int? articleId;
         public int? articleDetailId;
         public String description;
         public String path;
-        public int main;
-        public int position;
-        public int width;
-        public int height;
+        public int? main;
+        public int? position;
+        public int? width;
+        public int? height;
         public String relations;
         public String extension;
         public int? parentId;
