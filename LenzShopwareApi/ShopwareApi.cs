@@ -23,6 +23,7 @@ namespace Lenz.ShopwareApi
         private CategoryRessource categoryRessource;
         private OrderRessource orderRessource;
         private ManufacturerResource manufacturerResource;
+        private MediaResource mediaResource;
 
         public ShopwareApi(string url, string username, string password)
         {
@@ -72,6 +73,15 @@ namespace Lenz.ShopwareApi
                 this.manufacturerResource = new ManufacturerResource(this.client);
             }
             return this.manufacturerResource;
+        }
+
+        public MediaResource getMediaResource()
+        {
+            if (this.mediaResource == null)
+            {
+                this.mediaResource = new MediaResource(this.client);
+            }
+            return this.mediaResource;
         }
     }
     public class DigestAuthenticator : IAuthenticator

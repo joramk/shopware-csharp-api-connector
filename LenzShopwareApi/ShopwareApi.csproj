@@ -116,8 +116,10 @@
     <Compile Include="Ressources\Interfaces\ICategoryRessource.cs" />
     <Compile Include="Ressources\Interfaces\IArticleRessource.cs" />
     <Compile Include="Ressources\Interfaces\IManufacturerResource.cs" />
+    <Compile Include="Ressources\Interfaces\IMediaResource.cs" />
     <Compile Include="Ressources\Interfaces\IOrderRessource.cs" />
     <Compile Include="Ressources\ManufacturerResource.cs" />
+    <Compile Include="Ressources\MediaResource.cs" />
     <Compile Include="Ressources\OrderRessource.cs" />
     <Compile Include="Ressources\SuperRessource.cs" />
     <Compile Include="ShopwareApi.cs" />

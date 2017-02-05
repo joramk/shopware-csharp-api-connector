@@ -132,7 +132,7 @@ namespace Lenz.ShopwareApi.Ressources
             return "";
         }
 
-        private String execute(string ressource, RestSharp.Method method, List<KeyValuePair<String, String>> parameters, String body)
+        protected String execute(string ressource, RestSharp.Method method, List<KeyValuePair<String, String>> parameters, String body)
         {
             var request = new RestRequest(ressource, method);
             request.RequestFormat = DataFormat.Json;
