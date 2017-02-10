@@ -24,6 +24,7 @@ namespace Lenz.ShopwareApi.Models.Articles
         public string len;
         public string height;
         public string ean;
+        public string purchasePrice;
         public int position;
         public int minPurchase;
         public int? purchaseSteps;
