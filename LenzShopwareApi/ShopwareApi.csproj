@@ -103,6 +103,7 @@
     <Compile Include="Models\Articles\SimilarArticle.cs" />
     <Compile Include="Models\Articles\Translation.cs" />
     <Compile Include="Models\Categories\Category.cs" />
+    <Compile Include="Models\Customers\Customer.cs" />
     <Compile Include="Models\Downloads\Download.cs" />
     <Compile Include="Models\Images\Image.cs" />
     <Compile Include="Models\Links\Link.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Ressources\CustomerRessource.cs" />
     <Compile Include="Ressources\Interfaces\ICategoryRessource.cs" />
     <Compile Include="Ressources\Interfaces\IArticleRessource.cs" />
+    <Compile Include="Ressources\Interfaces\ICustomerResource.cs" />
     <Compile Include="Ressources\Interfaces\IManufacturerResource.cs" />
     <Compile Include="Ressources\Interfaces\IMediaResource.cs" />
     <Compile Include="Ressources\Interfaces\IOrderRessource.cs" />

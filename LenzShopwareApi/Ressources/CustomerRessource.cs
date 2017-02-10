@@ -1,11 +1,12 @@
-﻿using Lenz.ShopwareApi.Models.Orders;
+﻿using Lenz.ShopwareApi.Models.Customers;
 using RestSharp;
+using System;
 
 namespace Lenz.ShopwareApi.Ressources
 {
-    public class CustomerRessource : SuperRessource<Order>
+    public class CustomerResource : SuperRessource<Customer>, ICustomerResource
     {
-        public CustomerRessource(IRestClient client)
+        public CustomerResource(IRestClient client)
             : base (client)
         {
             ressourceUrl = "customers";
