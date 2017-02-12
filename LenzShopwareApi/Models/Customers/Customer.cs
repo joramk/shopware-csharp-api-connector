@@ -42,7 +42,7 @@ namespace Lenz.ShopwareApi.Models.Customers
         public string text6;
     }
 
-    public class Address        // as of shopware 5.2
+    public class Address        // as of shopware 5.2, data when retrieving information
     {
         public int? id;
         public string company;
@@ -63,6 +63,27 @@ namespace Lenz.ShopwareApi.Models.Customers
         public AddressAttributes attribute;
         public Country country;
         public State state;
+    }
+
+    public class AddressPost        // address when creating/updating data
+    {
+        public int? id;
+        public string company;
+        public string department;
+        public string salutation;
+        public string firstname;
+        public string title;
+        public string lastname;
+        public string street;
+        public string zipcode;
+        public string city;
+        public string phone;
+        public string vatId;
+        public string additionalAddressLine1;
+        public string additionalAddressLine2;
+        public int country;
+        public int state;
+        public AddressAttributes attribute;
     }
 
     public class CustomerAttributes
@@ -126,5 +147,9 @@ namespace Lenz.ShopwareApi.Models.Customers
         public Address defaultBillingAddress;
         public List<CustomerPaymentData> paymentData;
         public Address defaultShippingAddress;
+
+        // additional data when creating/updating a customer
+        public AddressPost billing;
+        public AddressPost shipping;
     }
 }

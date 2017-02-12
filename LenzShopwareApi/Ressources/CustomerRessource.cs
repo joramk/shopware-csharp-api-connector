@@ -11,5 +11,11 @@ namespace Lenz.ShopwareApi.Ressources
         {
             ressourceUrl = "customers";
         }
+
+        public new int add(Customer c)
+        {
+            ApiPostResponse response = base.add(c);
+            return response.id.GetValueOrDefault();
+        }
     }
 }

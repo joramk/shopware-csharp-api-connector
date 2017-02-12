@@ -24,6 +24,7 @@ namespace Lenz.ShopwareApi
         private OrderRessource orderRessource;
         private ManufacturerResource manufacturerResource;
         private MediaResource mediaResource;
+        private CustomerResource customerResource;
 
         public ShopwareApi(string url, string username, string password)
         {
@@ -48,7 +49,7 @@ namespace Lenz.ShopwareApi
             return this.articleRessource;
         }
 
-        public ICategoryRessource getCategoryRessource()
+        public CategoryRessource getCategoryRessource()
         {
             if (this.categoryRessource == null)
             {
@@ -82,6 +83,15 @@ namespace Lenz.ShopwareApi
                 this.mediaResource = new MediaResource(this.client);
             }
             return this.mediaResource;
+        }
+
+        public CustomerResource getCustomerResource()
+        {
+            if (this.customerResource == null)
+            {
+                this.customerResource = new CustomerResource(this.client);
+            }
+            return this.customerResource;
         }
     }
     public class DigestAuthenticator : IAuthenticator

@@ -12,6 +12,7 @@ namespace Lenz.ShopwareApi
         public TData data;
         public Boolean success;
         public string message;
+        public List<string> errors;     // details about the error (e.g. Validation error details)
     }
 
     public class ApiPostResponse
