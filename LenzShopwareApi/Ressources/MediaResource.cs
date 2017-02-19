@@ -16,15 +16,6 @@ namespace Lenz.ShopwareApi.Ressources
             ressourceUrl = "media";
         }
 
-        private class MediaUpload : Media
-        {
-            protected string file;
-            public MediaUpload(Media m, string f) : base(m.id, m.albumId, m.name, m.description, m.path, m.type, m.extension, m.userId, m.created, m.fileSize)
-            {
-                file = f;
-            }
-        }
-
         public new List<Media> getAll()
         {
             ApiRequest request = new ApiRequest(this.ressourceUrl, Method.GET);
@@ -35,12 +26,11 @@ namespace Lenz.ShopwareApi.Ressources
             return response.data;
         }
 
-        public ApiPostResponse add(Media media, string file)
+        public new ApiPostResponse add(Media media)
         {
-            if ( (media.albumId !=0) && (file != null))
+            if ( (media.album !=0) && (media.file != null))
             {
-                MediaUpload mu = new MediaUpload(media, file);
-                String json = JsonConvert.SerializeObject(mu, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                String json = JsonConvert.SerializeObject(media, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 ApiResponse < ApiPostResponse > response = convertResponseStringToObject<ApiPostResponse>(execute(this.ressourceUrl, Method.POST, null, json));
                 if (!response.success)
                 {
@@ -48,7 +38,7 @@ namespace Lenz.ShopwareApi.Ressources
                 }
                 return response.data;
             }
-            throw new Exception("Minimum required fields for media add: media.albumID and file to upload");
+            throw new Exception("Minimum required fields for media add: 'album' and 'file'");
         }
 
         public void delete(int id)

@@ -13,7 +13,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         Media get(int id);
 
-        ApiPostResponse add(Media media, string file);
+        ApiPostResponse add(Media media);
 
         void delete(int id);
     }

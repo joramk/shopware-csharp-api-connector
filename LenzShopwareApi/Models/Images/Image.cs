@@ -10,29 +10,19 @@ namespace Lenz.ShopwareApi.Models.Images
 
     public class Media
     {
-        public int id;
-        public int albumId;         // see enum MediaAlbum for values
+        public int? id;
+        public int? albumId;         // see enum MediaAlbum for values
         public string name;
         public string description;
         public string path;
         public string type;
         public string extension;
         public int? userId;
-        public string created;     // date/time
+        public string created;      // date/time
         public int? fileSize;
 
-        public Media(int m_id, int m_albumId, string m_name, string m_description, string m_path, string m_type, string m_extension, int? m_userId, string m_created, int? m_fileSize)
-        {
-            id = m_id;
-            albumId = m_albumId;
-            name = m_name;
-            description = m_description;
-            path = m_path;
-            type = m_type;
-            extension = m_extension;
-            userId = m_userId;
-            created = m_created;
-            fileSize = m_fileSize;
-        }
+        // additional fields used for creating media
+        public int? album;          // required: instead of albumId
+        public string file;         // required: path to the file that should be uploaded
     }  
 }
