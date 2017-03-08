@@ -13,7 +13,7 @@ namespace Lenz.ShopwareApi.Ressources
             List<Order> orders = shopwareApi.getOrderRessource().getAll();
             // Example end.
         */
-        List<Order> getAll();
+//        List<Order> getAll();
 
         /**
             Get an order by its id.

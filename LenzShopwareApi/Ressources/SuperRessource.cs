@@ -9,7 +9,7 @@ namespace Lenz.ShopwareApi.Ressources
 {
     public abstract class SuperRessource<TResponse>
     {
-        protected String ressourceUrl;
+        protected string ressourceUrl;
 
         protected IRestClient client { get; set; }
 
@@ -40,9 +40,9 @@ namespace Lenz.ShopwareApi.Ressources
             return response.data;
         }
 
-        public List<TResponse> getAll()
+        public List<TResponse> getAll(ParamData parameters)
         {
-            ApiResponse<List<TResponse>> response = convertResponseStringToObject<List<TResponse>>(executeGetAll());
+            ApiResponse<List<TResponse>> response = convertResponseStringToObject<List<TResponse>>(execute(this.ressourceUrl+"/", Method.GET, null, parameters, null));
             if(!response.success)
             {
                 throw new Exception(response.message);
@@ -60,27 +60,27 @@ namespace Lenz.ShopwareApi.Ressources
             return response.data;
         }
 
-        protected String executeAdd(TResponse data)
+        protected string executeAdd(TResponse data)
         {
-            String json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             Debug.WriteLine(json);
-            return this.execute(this.ressourceUrl, Method.POST, null, json);
+            return this.execute(this.ressourceUrl, Method.POST, null, null, json);
         }
 
         public void update(TResponse data)
         {
-            String response = this.executeUpdate(data, "");
+            string response = this.executeUpdate(data, "");
         }
 
-        protected String executeUpdate(TResponse data, String id)
+        protected string executeUpdate(TResponse data, string id)
         {
-            String json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             Debug.WriteLine(json);
 
             // set id.
-            List<KeyValuePair<String, String>> parameters = new List<KeyValuePair<String, String>>();
-            parameters.Add(new KeyValuePair<String, String>("id", id));
-            return this.execute(this.ressourceUrl + "/{id}", Method.PUT, parameters, json);
+            List<KeyValuePair<string, string>> urlData = new List<KeyValuePair<string, string>>();
+            urlData.Add(new KeyValuePair<string, string>("id", id));
+            return this.execute(this.ressourceUrl + "/{id}", Method.PUT, urlData, null, json);
         }
 
         public void delete(string id)
@@ -88,65 +88,66 @@ namespace Lenz.ShopwareApi.Ressources
             string response = this.executeDelete(id);
         }
 
-        protected String executeDelete(string id)
+        protected string executeDelete(string id)
         {
             // set id.
-            List<KeyValuePair<String, String>> parameters = new List<KeyValuePair<String, String>>();
-            parameters.Add(new KeyValuePair<String, String>("id", id));
-            String response = this.execute(this.ressourceUrl + "/{id}", Method.DELETE, parameters);
+            List<KeyValuePair<string, string>> urlData = new List<KeyValuePair<string, string>>();
+            urlData.Add(new KeyValuePair<string, string>("id", id));
+            string response = this.execute(this.ressourceUrl + "/{id}", Method.DELETE, urlData);
             return response;
         }
 
-        protected ApiResponse<A> convertResponseStringToObject<A>(string responseString)
+        protected ApiResponse<A> convertResponseStringToObject<A>(string responsestring)
         {
-            return JsonConvert.DeserializeObject<ApiResponse<A>>(responseString, new JsonSerializerSettings
+            return JsonConvert.DeserializeObject<ApiResponse<A>>(responsestring, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             });
         }
 
-        protected String executeGet(string id)
+        protected string executeGet(string id)
         {
             // set id.
-            List<KeyValuePair<String, String>> parameters = new List<KeyValuePair<String, String>>();
-            parameters.Add(new KeyValuePair<String, String>("id", id));
-            String response = this.execute(this.ressourceUrl + "/{id}", Method.GET, parameters);
+            List<KeyValuePair<string, string>> urlData = new List<KeyValuePair<string, string>>();
+            urlData.Add(new KeyValuePair<string, string>("id", id));
+            string response = this.execute(this.ressourceUrl + "/{id}", Method.GET, urlData);
             return response;
         }
 
-        protected String executeGetAll()
+        private string execute(string ressource, RestSharp.Method method, List<KeyValuePair<string, string>> urlData)
         {
-            List<KeyValuePair<String, String>> parameters = new List<KeyValuePair<String, String>>();
-
-            return this.execute(this.ressourceUrl, Method.GET, parameters);
+            return execute(ressource, method, urlData, null, "");
         }
 
-        private String execute(string ressource, RestSharp.Method method, List<KeyValuePair<String, String>> parameters)
+        private string execute(ApiRequest request)
         {
-            return execute(ressource, method, parameters, "");
-        }
-
-        private String execute(ApiRequest request)
-        {
-
             return "";
         }
 
-        protected String execute(string ressource, RestSharp.Method method, List<KeyValuePair<String, String>> parameters, String body)
+        protected string execute(string ressource, RestSharp.Method method, List<KeyValuePair<string, string>> urlData, ParamData parameters, string body)
         {
             var request = new RestRequest(ressource, method);
             request.RequestFormat = DataFormat.Json;
 
-            if (parameters != null)
+            if (urlData != null)
             {
-                foreach (KeyValuePair<String, String> parameter in parameters)
+                foreach (KeyValuePair<string, string> parameter in urlData)
                 {
-                    request.AddUrlSegment(parameter.Key, parameter.Value); // replaces matching token in request.Resource
+                    request.AddUrlSegment(parameter.Key, parameter.Value);          // replaces matching token in request.Resource
                 }
             }
 
+            // add queryparameters if present
+            if (parameters != null)
+            {
+                parameters.AddToRequest(request);
+            }
+
             // send body if it is available
-            request.AddParameter("application/json; charset=utf-8", body, ParameterType.RequestBody);
+            if (!string.IsNullOrEmpty(body))
+            {
+                request.AddParameter("application/json; charset=utf-8", body, ParameterType.RequestBody);
+            }
 
             // execute the request
             IRestResponse response = client.Execute(request);

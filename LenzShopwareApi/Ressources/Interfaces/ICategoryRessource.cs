@@ -5,7 +5,7 @@ namespace Lenz.ShopwareApi.Ressources
 {
     public interface ICategoryRessource
     {
-        List<Category> getAll();
+//        List<Category> getAll();
 
         Category get(int id);
 

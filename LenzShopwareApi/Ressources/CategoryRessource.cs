@@ -14,17 +14,17 @@ namespace Lenz.ShopwareApi.Ressources
             ressourceUrl = "categories";
         }
 
-        public new List<Category> getAll()
-        {
-            ApiRequest request = new ApiRequest(this.ressourceUrl, Method.GET);
-            ApiRequestExecutor executor = new ApiRequestExecutor();
+        //public new List<Category> getAll()
+        //{
+        //    ApiRequest request = new ApiRequest(this.ressourceUrl, Method.GET);
+        //    ApiRequestExecutor executor = new ApiRequestExecutor();
 
-            ApiResponse<List<Category>> response = executor.execute<List<Category>>(client, request);
+        //    ApiResponse<List<Category>> response = executor.execute<List<Category>>(client, request);
 
-            Debug.WriteLine("New Method used!");
+        //    Debug.WriteLine("New Method used!");
 
-            return response.data;
-        }
+        //    return response.data;
+        //}
 
         public new void add(Category category)
         {

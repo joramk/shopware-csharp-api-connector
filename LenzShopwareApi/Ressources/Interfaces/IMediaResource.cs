@@ -9,7 +9,7 @@ namespace Lenz.ShopwareApi.Ressources
 {
     public interface IMediaResource
     {
-        List<Media> getAll();
+//        List<Media> getAll();
 
         Media get(int id);
 

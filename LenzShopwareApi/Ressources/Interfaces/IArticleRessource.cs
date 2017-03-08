@@ -5,7 +5,7 @@ namespace Lenz.ShopwareApi.Ressources
 {
     public interface IArticleRessource
     {
-        List<ArticleMain> getAll();
+//        List<ArticleMain> getAll(List<KeyValuePair<string, string>> parameters);
 
         ArticleMain get(int id);
 

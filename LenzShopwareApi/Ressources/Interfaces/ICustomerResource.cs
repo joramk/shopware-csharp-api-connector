@@ -9,7 +9,7 @@ namespace Lenz.ShopwareApi.Ressources
 {
     public interface ICustomerResource
     {
-        List<Customer> getAll();
+//        List<Customer> getAll();
 
         Customer get(int id);
 
