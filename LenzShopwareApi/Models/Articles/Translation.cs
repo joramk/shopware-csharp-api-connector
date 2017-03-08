@@ -31,6 +31,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         public String descriptionLong;
         public String keywords;
         public String packUnit;
-        public int? shopId;
+//        public int? shopId;
     }
 }

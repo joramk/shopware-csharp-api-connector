@@ -25,6 +25,7 @@ namespace Lenz.ShopwareApi
         private ManufacturerResource manufacturerResource;
         private MediaResource mediaResource;
         private CustomerResource customerResource;
+        private ArticleTranslationResource articleTranslationResource;
 
         public ShopwareApi(string url, string username, string password)
         {
@@ -92,6 +93,15 @@ namespace Lenz.ShopwareApi
                 this.customerResource = new CustomerResource(this.client);
             }
             return this.customerResource;
+        }
+
+        public ArticleTranslationResource getArticleTranslationResource()
+        {
+            if (this.articleTranslationResource == null)
+            {
+                this.articleTranslationResource = new ArticleTranslationResource(this.client);
+            }
+            return this.articleTranslationResource;
         }
     }
     public class DigestAuthenticator : IAuthenticator

@@ -49,7 +49,7 @@ namespace ShopwareApiTests
         public void getAllArticles()
         {
             ShopwareApi shopwareApi = ApiConnection.getDemoApi();
-            List<ArticleMain> articles = shopwareApi.getArticleRessource().getAll();
+            List<ArticleMain> articles = shopwareApi.getArticleRessource().getAll(null);
 
             Console.WriteLine("Found articles: " + articles.Count);
         }

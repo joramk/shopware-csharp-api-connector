@@ -120,10 +120,12 @@
     <Compile Include="Ressources\Interfaces\IManufacturerResource.cs" />
     <Compile Include="Ressources\Interfaces\IMediaResource.cs" />
     <Compile Include="Ressources\Interfaces\IOrderRessource.cs" />
+    <Compile Include="Ressources\Interfaces\ITranslationResource.cs" />
     <Compile Include="Ressources\ManufacturerResource.cs" />
     <Compile Include="Ressources\MediaResource.cs" />
     <Compile Include="Ressources\OrderRessource.cs" />
     <Compile Include="Ressources\SuperRessource.cs" />
+    <Compile Include="Ressources\TranslationResource.cs" />
     <Compile Include="ShopwareApi.cs" />
   </ItemGroup>
   <ItemGroup>

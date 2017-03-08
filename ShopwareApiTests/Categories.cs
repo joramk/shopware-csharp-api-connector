@@ -14,7 +14,7 @@ namespace ShopwareApiTests
         public void getAll()
         {
             ShopwareApi shopwareApi = ApiConnection.getDemoApi();
-            List<Category> categories = shopwareApi.getCategoryRessource().getAll();
+            List<Category> categories = shopwareApi.getCategoryRessource().getAll(null);
 
             Debug.WriteLine("Found: " + categories.Count);
 
