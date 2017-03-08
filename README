@@ -1,5 +1,21 @@
 # Shopware C# API Connector
 
+  A shopware C# API connector as part of my project to interface the ERP "Sage Line 100" to Shopware
+  Used the "shopdoktor" code as a base to start with (see original readme text below)
+  
+  Actual release is still beta.
+  From original repo:
+     * numerous fixes (to reflect changed API models in 5.2.x);
+	 * added features:
+	     * return id of created item (data returned from POST)
+		 * ManufacturerResource (as from shopware 5.1.3)
+		 * media resource
+	     * the ability to add filter and/or sorting (when calling getAll)
+	     * first support for translation resource
+
+
+# Original text from "shopdoktor"
+
 Bitte beachten Sie, dass sich die Software noch in Entwicklung befindet. Für weitere Details können Sie gerne eine Mail an info@shopdoktor.com schreiben.
 
 DEUTSCH:
