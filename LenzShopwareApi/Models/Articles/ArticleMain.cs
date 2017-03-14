@@ -29,15 +29,15 @@ namespace Lenz.ShopwareApi.Models.Articles
         public string description;
         public string descriptionLong;
 
-        public int pseudoSales;
-        public bool notification;
+        public int? pseudoSales;
+        public bool? notification;
         
-        public bool active;
-        public bool highlight;
-        public bool lastStock;
-        public bool crossBundleLook;
+        public bool? active;
+        public bool? highlight;
+        public bool? lastStock;
+        public bool? crossBundleLook;
         public string template;
-        public int mode;
+        public int? mode;
         public string availableFrom;
         public string availableTo;
 
@@ -48,7 +48,7 @@ namespace Lenz.ShopwareApi.Models.Articles
         public String added;
         public String changed;
         /* price */
-        public bool priceGroupActive;
+        public bool? priceGroupActive;
 
         public List<PropertyValue> propertyValues;
         public ArticleMainDetail mainDetail = new ArticleMainDetail();

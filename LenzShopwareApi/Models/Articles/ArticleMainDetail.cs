@@ -9,30 +9,30 @@ namespace Lenz.ShopwareApi.Models.Articles
 {
     public class ArticleMainDetail
     {
-        public int id;
-        public int articleId;
-        public int unitId;
+        public int? id;
+        public int? articleId;
+        public int? unitId;
         public string number;
         public string supplierNumber;
-        public int kind;
+        public int? kind;
         public string additionalText;
-        public bool active;
-        public int inStock;
-        public int stockMin;
+        public bool? active;
+        public int? inStock;
+        public int? stockMin;
         public string weight;
         public string width;
         public string len;
         public string height;
         public string ean;
         public string purchasePrice;
-        public int position;
-        public int minPurchase;
+        public int? position;
+        public int? minPurchase;
         public int? purchaseSteps;
         public int? maxPurchase;
         public string purchaseUnit;
         public string referenceUnit;
         public string packUnit;
-        public bool shippingFree;
+        public bool? shippingFree;
         public string releaseDate;
         public string shippingTime;
         public List<Price> prices;
