@@ -29,14 +29,14 @@ namespace Lenz.ShopwareApi.Ressources
         {
             if(article.id != null)
             {
-                if(article.mainDetail.configuratorOptions.Count == 0)
+                if (article.mainDetail.id == null)
                 {
-                    article.mainDetail.configuratorOptions = null;
+                    article.mainDetail = null;          // remove complete detail from update
                 }
                 base.executeUpdate(article, article.id.ToString());
                 return;
             }
-            throw new Exception("Minimum required fields for article update: article.id, article.name, article.mainDetail.number, article.supplier.name, article.tax.tax");
+            throw new Exception("Minimum required fields for article update: article.id");
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Lenz.ShopwareApi.Ressources
         /// <returns></returns>
         public ArticleMain getByOrdernumber(string ordernumber)
         {
-            return this.get(ordernumber + "?useNumberAsID=true");
+            return this.get(ordernumber, true);
         }
     }
 }

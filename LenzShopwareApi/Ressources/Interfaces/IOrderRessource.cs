@@ -33,7 +33,7 @@ namespace Lenz.ShopwareApi.Ressources
             Order order = shopwareApi.getOrderRessource().get("20003?useNumberAsId=true");
             // Example end.
         */
-        Order get(string id);
+        Order get(string id, bool useNumberAsId = false);
 
         /**
             Update a single order. WARNING: Only the inserted values are updated. All other values remain with the original values.

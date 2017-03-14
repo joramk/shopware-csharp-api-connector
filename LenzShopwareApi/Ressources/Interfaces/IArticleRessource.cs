@@ -9,7 +9,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         ArticleMain get(int id);
 
-        ArticleMain get(string id);
+        ArticleMain get(string id, bool useNumberAsId = false);
 
         ArticleMain getByOrdernumber(string ordernumber);
 

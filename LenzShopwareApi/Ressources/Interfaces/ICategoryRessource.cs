@@ -9,7 +9,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         Category get(int id);
 
-        Category get(string id);
+        Category get(string id, bool useNumberAsId = false);
 
         void add(Category category);
 

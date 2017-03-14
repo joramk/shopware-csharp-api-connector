@@ -30,9 +30,9 @@ namespace Lenz.ShopwareApi.Ressources
             }
         }
 
-        public TResponse get(string id)
+        public TResponse get(string id, bool useNumberAsId = false)
         {
-            ApiResponse<TResponse> response = convertResponseStringToObject<TResponse>(this.executeGet(id));
+            ApiResponse<TResponse> response = convertResponseStringToObject<TResponse>(this.executeGet(id, useNumberAsId));
             if (!response.success)
             {
                 throw new Exception(response.message);
@@ -105,12 +105,17 @@ namespace Lenz.ShopwareApi.Ressources
             });
         }
 
-        protected string executeGet(string id)
+        protected string executeGet(string id, bool useNumberAsId = false)
         {
             // set id.
             List<KeyValuePair<string, string>> urlData = new List<KeyValuePair<string, string>>();
             urlData.Add(new KeyValuePair<string, string>("id", id));
-            string response = this.execute(this.ressourceUrl + "/{id}", Method.GET, urlData);
+            string sUrl = this.ressourceUrl + "/{id}";
+            if (useNumberAsId)
+            {
+                sUrl += "?useNumberAsId=true";
+            }
+            string response = this.execute(sUrl, Method.GET, urlData);
             return response;
         }
 

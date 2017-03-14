@@ -13,7 +13,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         Customer get(int id);
 
-        Customer get(string id);
+        Customer get(string id, bool useNumberAsId = false);
 
         ApiPostResponse add(Customer c);
 
