@@ -32,15 +32,15 @@ namespace Lenz.ShopwareApi.Ressources
 
         public new void update(Translation<Models.Articles.Translation> translatedArticle)
         {
-            if (translatedArticle.key != null &&
-                !string.IsNullOrEmpty(translatedArticle.type) &&
-                translatedArticle.shopId != null)
+            if (translatedArticle.key == null ||
+                string.IsNullOrEmpty(translatedArticle.type) ||
+                translatedArticle.shopId == null)
             {
-                int i = translatedArticle.key.GetValueOrDefault();
-                translatedArticle.key = null;                           // hide this field in json update data
-                base.executeUpdate(translatedArticle, i.ToString());
+                throw new ArgumentException("'key', 'type' and 'shopId' are required for updating a translation");
             }
-            throw new ArgumentException("'key', 'type' and 'shopId' are required for updating a translation");
+            int i = translatedArticle.key.GetValueOrDefault();
+            translatedArticle.key = null;                           // hide this field in json update data
+            base.executeUpdate(translatedArticle, i.ToString());
         }
     }
 }
