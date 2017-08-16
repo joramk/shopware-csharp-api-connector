@@ -19,7 +19,7 @@ namespace Lenz.ShopwareApi.Ressources
                 !string.IsNullOrEmpty(translatedArticle.type) &&
                 translatedArticle.shopId != null)
             {
-                ApiPostResponse response = base.add(translatedArticle);
+                ApiPostResponseData response = base.add(translatedArticle);
                 return response.id.GetValueOrDefault();
             }
             throw new ArgumentException("'key', 'type' and 'shopId' are required for adding a translation");

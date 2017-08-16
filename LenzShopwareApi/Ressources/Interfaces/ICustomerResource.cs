@@ -15,7 +15,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         Customer get(string id, bool useNumberAsId = false);
 
-        ApiPostResponse add(Customer c);
+        ApiPostResponseData add(Customer c);
 
         void update(Customer c);
     }

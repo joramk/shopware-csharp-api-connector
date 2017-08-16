@@ -15,7 +15,7 @@ namespace Lenz.ShopwareApi.Ressources
         {
             if (manufacturer.name != null)
             {
-                ApiPostResponse response = base.add(manufacturer);
+                ApiPostResponseData response = base.add(manufacturer);
                 return response.id.GetValueOrDefault();
             }
             throw new Exception("Minimum required field for manufacturer add: supplier.name");

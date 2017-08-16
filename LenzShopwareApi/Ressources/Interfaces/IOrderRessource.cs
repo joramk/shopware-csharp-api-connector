@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Lenz.ShopwareApi.Ressources
 {
-    public interface IOrderRessource
+    public interface IOrderResource
     {
         /**
             Get all orders (with less information).

@@ -120,23 +120,26 @@ namespace Lenz.ShopwareApi
         public void AddToRequest(RestRequest rr)
         {
             int i = 0;      // index of our list
-            foreach(var filter in filters)
+            foreach (var filter in filters)
             {
                 var dict = filter.GetData();
-                foreach(var d in dict)
+                foreach (var d in dict)
                 {
                     rr.AddQueryParameter("filter[" + i.ToString() + "][" + d.Key + "]", d.Value);
                 }
+                i++;
             }
-            foreach(var sort in sorting)
+            i = 0;  // reset index
+            foreach (var sort in sorting)
             {
                 var dict = sort.GetData();
                 foreach (var d in dict)
                 {
                     rr.AddQueryParameter("sort[" + i.ToString() + "][" + d.Key + "]", d.Value);
                 }
+                i++;
             }
-            foreach(var entry in pd_dict_int)
+            foreach (var entry in pd_dict_int)
             {
                 rr.AddQueryParameter(entry.Key, entry.Value.ToString());
             }

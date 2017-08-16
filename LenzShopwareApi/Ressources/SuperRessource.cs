@@ -50,9 +50,9 @@ namespace Lenz.ShopwareApi.Ressources
             return response.data;
         }
 
-        public ApiPostResponse add(TResponse data)
+        public ApiPostResponseData add(TResponse data)
         {
-            ApiResponse<ApiPostResponse> response = convertResponseStringToObject<ApiPostResponse>(this.executeAdd(data));
+            ApiResponse<ApiPostResponseData> response = convertResponseStringToObject<ApiPostResponseData>(this.executeAdd(data));
             if (!response.success)
             {
                 throw new Exception(response.message);
@@ -83,9 +83,24 @@ namespace Lenz.ShopwareApi.Ressources
             return this.execute(this.ressourceUrl + "/{id}", Method.PUT, urlData, null, json);
         }
 
-        public void delete(string id)
+        public bool delete(string id)
         {
-            string response = this.executeDelete(id);
+            ApiSimpleResponse response = convertResponseStringToObject(this.executeDelete(id));
+            if (!response.success)
+            {
+                throw new Exception(response.message);
+            }
+            return true;
+        }
+
+        public List<ApiResponse<TResponse>> delete(int[] arr_ids)
+        {
+            ApiBatchResponse<TResponse> response = convertBatchResponseStringToObject<TResponse>(this.executeDelete(arr_ids));
+            if (!response.success)
+            {
+                throw new Exception(response.message);
+            }
+            return response.data;
         }
 
         protected string executeDelete(string id)
@@ -97,9 +112,39 @@ namespace Lenz.ShopwareApi.Ressources
             return response;
         }
 
+        protected string executeDelete(int[] arr_ids)
+        {
+            // convert the array of ids to delete into array( 'id' => id ) style
+            List<Tuple<string, int>> data = new List<Tuple<string, int>>();
+            foreach(int i in arr_ids)
+            {
+                data.Add(new Tuple<string, int> ( "id", i ));
+            }
+
+            // now get this list in json format to add it to the body of the request
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return execute(ressourceUrl, Method.DELETE, null, null, json);
+        }
+
+        protected ApiSimpleResponse convertResponseStringToObject(string responsestring)
+        {
+            return JsonConvert.DeserializeObject<ApiSimpleResponse>(responsestring, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+        }
+
         protected ApiResponse<A> convertResponseStringToObject<A>(string responsestring)
         {
             return JsonConvert.DeserializeObject<ApiResponse<A>>(responsestring, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+        }
+
+        protected ApiBatchResponse<A> convertBatchResponseStringToObject<A>(string responsestring)
+        {
+            return JsonConvert.DeserializeObject<ApiBatchResponse<A>>(responsestring, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             });

@@ -19,7 +19,7 @@ namespace Lenz.ShopwareApi.Ressources
                 && (article.supplierId!=null || article.supplier != null)
                 && (article.taxId != null || article.tax != null ))
             {
-                ApiPostResponse response = base.add(article);
+                ApiPostResponseData response = base.add(article);
                 return response.id.GetValueOrDefault();
             }
             throw new ArgumentException("Minimum required fields for article add: article.name, article.mainDetail.number, article.supplier or article.supplierId, article.tax or article.taxId");

@@ -26,12 +26,12 @@ namespace Lenz.ShopwareApi.Ressources
         //    return response.data;
         //}
 
-        public new ApiPostResponse add(Media media)
+        public new ApiPostResponseData add(Media media)
         {
             if ( (media.album !=0) && (media.file != null))
             {
                 String json = JsonConvert.SerializeObject(media, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                ApiResponse < ApiPostResponse > response = convertResponseStringToObject<ApiPostResponse>(execute(this.ressourceUrl, Method.POST, null, null, json));
+                ApiResponse < ApiPostResponseData > response = convertResponseStringToObject<ApiPostResponseData>(execute(this.ressourceUrl, Method.POST, null, null, json));
                 if (!response.success)
                 {
                     throw new Exception(response.message);

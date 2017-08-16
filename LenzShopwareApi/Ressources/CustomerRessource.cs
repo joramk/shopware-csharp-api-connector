@@ -14,7 +14,7 @@ namespace Lenz.ShopwareApi.Ressources
 
         public new int add(Customer c)
         {
-            ApiPostResponse response = base.add(c);
+            ApiPostResponseData response = base.add(c);
             return response.id.GetValueOrDefault();
         }
     }

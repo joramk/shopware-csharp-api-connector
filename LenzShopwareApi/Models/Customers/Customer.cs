@@ -12,16 +12,16 @@ namespace Lenz.ShopwareApi.Models.Customers
         public string name;
         public string iso;
         public string isoName;
-        public int position;
+        public int? position;
         public string description;
-        public bool shippingFree;
-        public int taxFree;
-        public int taxFreeUstId;
-        public int taxFreeUstIdChecked;
-        public bool active;
+        public bool? shippingFree;
+        public int? taxFree;
+        public int? taxFreeUstId;
+        public int? taxFreeUstIdChecked;
+        public bool? active;
         public string iso3;
-        public bool displayStateInRegistration;
-        public bool forceStateInRegistration;
+        public bool? displayStateInRegistration;
+        public bool? forceStateInRegistration;
         public int areaId;
     }
 
@@ -90,8 +90,9 @@ namespace Lenz.ShopwareApi.Models.Customers
     {
         public int? id;                 // primary key
         public int? customerId;         // foreign key to customer's primary key
-        public int? swagPricegroup;     // foreign key to customer price group  (PLUGIN: for special prices for a customer)
-        public string memaAcctmngr;     // free text field: link to account manager in ERP
+        public int? swagPricegroup;         // foreign key to customer price group  (PLUGIN: for special prices for a customer)
+        public string memaAcctmngr;         // link to account manager in ERP  (PLUGIN: MemaxHistory)
+        public string netiRegisterNumber;   // link to Consultant (PLUGIN: NetiConsultantTools)
     }
 
     public class CustomerPaymentData
@@ -106,6 +107,16 @@ namespace Lenz.ShopwareApi.Models.Customers
         public string bankCode;
         public string accountHolder;
         public string createdAt;
+    }
+
+    public class Debit
+    {
+        public int? id;
+        public int? customerId;
+        public string account;
+        public string bankCode;
+        public string bankName;
+        public string accountHolder;
     }
 
     public class Customer
@@ -147,9 +158,13 @@ namespace Lenz.ShopwareApi.Models.Customers
         public Address defaultBillingAddress;
         public List<CustomerPaymentData> paymentData;
         public Address defaultShippingAddress;
+        public Debit debit;
 
         // additional data when creating/updating a customer
+        public string rawPassword;          // this password will not be hashed on save
+        public string password;             // this password will be hashed with default encoder on save
         public AddressPost billing;
         public AddressPost shipping;
+
     }
 }
