@@ -110,6 +110,9 @@
     <Compile Include="Models\Orders\Order.cs" />
     <Compile Include="Models\Manufacturers\Supplier.cs" />
     <Compile Include="Models\Articles\Tax.cs" />
+    <Compile Include="Models\Orders\OrderHistory.cs" />
+    <Compile Include="Models\Payments\Payment.cs" />
+    <Compile Include="Models\Shops\Shop.cs" />
     <Compile Include="Models\Translations\Translation.cs" />
     <Compile Include="Ressources\CategoryRessource.cs" />
     <Compile Include="Ressources\ArticleRessource.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Ressources\Interfaces\ITranslationResource.cs" />
     <Compile Include="Ressources\ManufacturerResource.cs" />
     <Compile Include="Ressources\MediaResource.cs" />
+    <Compile Include="Ressources\OrderHistoryResource.cs" />
     <Compile Include="Ressources\OrderRessource.cs" />
     <Compile Include="Ressources\SuperRessource.cs" />
     <Compile Include="Ressources\TranslationResource.cs" />

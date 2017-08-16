@@ -21,11 +21,12 @@ namespace Lenz.ShopwareApi
 
         private ArticleRessource articleRessource;
         private CategoryRessource categoryRessource;
-        private OrderRessource orderRessource;
+        private OrderResource orderResource;
         private ManufacturerResource manufacturerResource;
         private MediaResource mediaResource;
         private CustomerResource customerResource;
         private ArticleTranslationResource articleTranslationResource;
+        private OrderHistoryResource orderHistoryResource;
 
         public ShopwareApi(string url, string username, string password)
         {
@@ -59,13 +60,13 @@ namespace Lenz.ShopwareApi
             return this.categoryRessource;
         }
 
-        public OrderRessource getOrderRessource()
+        public OrderResource getOrderResource()
         {
-            if (this.orderRessource == null)
+            if (this.orderResource == null)
             {
-                this.orderRessource = new OrderRessource(this.client);
+                this.orderResource = new OrderResource(this.client);
             }
-            return this.orderRessource;
+            return this.orderResource;
         }
 
         public ManufacturerResource getManufacturerResource()
@@ -103,7 +104,17 @@ namespace Lenz.ShopwareApi
             }
             return this.articleTranslationResource;
         }
+
+        public OrderHistoryResource getOrderHistoryResource()
+        {
+            if (this.orderHistoryResource == null)
+            {
+                this.orderHistoryResource = new OrderHistoryResource(this.client);
+            }
+            return this.orderHistoryResource;
+        }
     }
+
     public class DigestAuthenticator : IAuthenticator
     {
         private readonly string _user;
