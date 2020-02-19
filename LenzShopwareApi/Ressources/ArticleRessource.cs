@@ -7,18 +7,19 @@ namespace Lenz.ShopwareApi.Ressources
     public class ArticleRessource : SuperRessource<ArticleMain>, IArticleRessource
     {
         public ArticleRessource(IRestClient client)
-            : base (client)
+            : base(client)
         {
             ressourceUrl = "articles";
         }
 
         public new void add(ArticleMain article)
         {
-            if(article.name != null
+            if (article.name != null
                 && article.mainDetail.number != null
                 && article.supplier != null
-                && article.tax.tax != null) {
-                    base.add(article);
+                && article.tax.tax != null)
+            {
+                base.add(article);
                 return;
             }
             throw new Exception("Minimum required fields for article add: article.name, article.mainDetail.number, article.supplier.name, article.tax.tax");
@@ -26,9 +27,9 @@ namespace Lenz.ShopwareApi.Ressources
 
         new public void update(ArticleMain article)
         {
-            if(article.id != null)
+            if (article.id != null)
             {
-                if(article.mainDetail.configuratorOptions.Count == 0)
+                if (article.mainDetail.configuratorOptions.Count == 0)
                 {
                     article.mainDetail.configuratorOptions = null;
                 }
@@ -45,7 +46,8 @@ namespace Lenz.ShopwareApi.Ressources
         /// <returns></returns>
         public ArticleMain getByOrdernumber(string ordernumber)
         {
-            return this.get(ordernumber + "?useNumberAsID=true");
+            this.AddQueryParameter("useNumberAsId", "1");
+            return this.get(ordernumber);
         }
     }
 }

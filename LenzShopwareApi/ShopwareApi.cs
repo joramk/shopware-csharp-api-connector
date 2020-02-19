@@ -22,6 +22,7 @@ namespace Lenz.ShopwareApi
         private ArticleRessource articleRessource;
         private CategoryRessource categoryRessource;
         private OrderRessource orderRessource;
+        private MerchantOrderRessource merchantOrderRessource;
 
         public ShopwareApi(string url, string username, string password)
         {
@@ -62,6 +63,15 @@ namespace Lenz.ShopwareApi
                 this.orderRessource = new OrderRessource(this.client);
             }
             return this.orderRessource;
+        }
+
+        public MerchantOrderRessource getMerchantOrderRessource()
+        {
+            if (this.merchantOrderRessource == null)
+            {
+                this.merchantOrderRessource = new MerchantOrderRessource(this.client);
+            }
+            return this.merchantOrderRessource;
         }
     }
     public class DigestAuthenticator : IAuthenticator
