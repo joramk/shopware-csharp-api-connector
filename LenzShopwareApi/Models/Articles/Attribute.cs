@@ -8,6 +8,7 @@ namespace Lenz.ShopwareApi.Models.Articles
 {
     public class Attribute
     {
+#pragma warning disable CS0169
         private int id;
         private int articleId;
         private int articleDetailId;
@@ -31,5 +32,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         private String attr18;
         private String attr19;
         private String attr20;
+#pragma warning restore CS0169
     }
 }

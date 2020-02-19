@@ -10,5 +10,9 @@ namespace ShopwareApiTests
         public void getOrder()
         {
         }
+        [TestMethod]
+        public void getMerchantOrder()
+        {
+        }
     }
 }

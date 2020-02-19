@@ -8,6 +8,7 @@ namespace Lenz.ShopwareApi.Models.Articles
 {
     public class Price
     {
+#pragma warning disable CS0169
         private int id;
         private int articleId;
         private int articleDetailsId;
@@ -18,5 +19,6 @@ namespace Lenz.ShopwareApi.Models.Articles
         private float pseudoPrice;
         private float basePrice;
         private float percent;
+#pragma warning restore CS0169
     }
 }
