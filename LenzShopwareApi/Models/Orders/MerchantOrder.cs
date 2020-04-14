@@ -10,12 +10,12 @@ namespace Lenz.ShopwareApi.Models.Orders
     {
         public int? id;
         public int ordernumber;
-        public bool ship;
+        public bool? ship;
         public double amount;
         public double amountNet;
         public string ordertime;
         public string currency;
-        public Products products;
+        public List<Products> products;
         public Shipping shipping;
     }
 }
